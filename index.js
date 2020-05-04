@@ -1,11 +1,12 @@
-const app = require("express")();
+const express = require('express');
+const app = express();
 const http = require("http").createServer(app);
 const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const io = require("socket.io")(http);
 const port = process.env.PORT || 5000;
-const publicPath = path.join(__dirname, "..", "public");
+// const publicPath = path.join(__dirname, "..", "public");
 
 const { createBoard } = require("./services/card-name-service");
 const { getById, update, add } = require("./services/game-service");
@@ -13,14 +14,11 @@ const { getById, update, add } = require("./services/game-service");
 app.use(cors());
 app.use(bodyParser.json());
 
-// app.use(express.static(publicPath));
-// app.get('*', (req, res) => {
-//    res.sendFile(path.join(publicPath, 'index.html'));
-// });
+app.use(express.static(path.join(__dirname, "client/build")));
 
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/index.html');
-// });
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 app.get("/api/creategame", (req, res) => {
   const newGame = createBoard();
@@ -58,7 +56,7 @@ io.on("connection", async (socket) => {
     const gameState = JSON.parse(data.gameStateStr);
     console.log("from update game: " + gameState);
     update(gameState).then((res) => {
-      console.log("after update game: ", res)
+      console.log("after update game: ", res);
       socket.broadcast
         .to(res.value._id)
         .emit("game updated", JSON.stringify(gameState));
