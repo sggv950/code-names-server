@@ -1,5 +1,3 @@
-'use strict';
-
 const mongoClient = require('mongodb').MongoClient;
 const url = 'mongodb+srv://sggv:BpV1BJbnuIPlQHUB@gmcluster1-vndwa.mongodb.net/test?retryWrites=true&w=majority'
 // const url = 'mongodb://localhost:27017';
