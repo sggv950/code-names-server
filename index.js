@@ -35,7 +35,7 @@ io.on("connection", async (socket) => {
   });
 
   socket.on("game", async (data) => {
-    console.log("game join");
+    console.log("game join: ", data);
     socket.join(data.game);
     getById(data.game).then((game) => {
       const gameStr = JSON.stringify(game);
@@ -49,6 +49,7 @@ io.on("connection", async (socket) => {
   });
 
   socket.on("update game", async (data) => {
+    console.log("game update: ", data);
     const gameState = JSON.parse(data.gameStateStr);
     update(gameState).then((res) => {
       socket.broadcast
@@ -56,6 +57,7 @@ io.on("connection", async (socket) => {
         .emit("game updated", JSON.stringify(gameState));
     });
   });
+
 });
 
 http.listen(port, () => {

@@ -1,4 +1,4 @@
-const { uuid } = require('uuidv4');
+const { uuid } = require("uuidv4");
 
 function createBoard() {
   const cardColorsOptions = ["blue", "red", "grey", "black"];
@@ -111,9 +111,10 @@ function createBoard() {
     isGameOver,
     winnerTeam: "",
     mentorClue: { wordNum: 0, clue: "" },
+    players: [],
   };
 }
 
 module.exports = {
-    createBoard
-}
+  createBoard,
+};

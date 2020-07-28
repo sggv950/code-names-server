@@ -1,6 +1,6 @@
 const mongoClient = require('mongodb').MongoClient;
-const url = 'mongodb+srv://sggv:BpV1BJbnuIPlQHUB@gmcluster1-vndwa.mongodb.net/test?retryWrites=true&w=majority'
-// const url = 'mongodb://localhost:27017';
+// const url = 'mongodb+srv://sggv:BpV1BJbnuIPlQHUB@gmcluster1-vndwa.mongodb.net/test?retryWrites=true&w=majority'
+const url = 'mongodb://localhost:27017';
 const dbName = 'GMdb';
 
 var dbConn = null;
