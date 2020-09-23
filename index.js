@@ -23,6 +23,14 @@ app.get("/api/creategame", (req, res) => {
   });
 });
 
+//DEV FUNCTION
+app.get("/api/gamedata/:id", (req, res) => {
+  const id = req.params.id;
+  getById(id).then(game => {
+    res.json(game);
+  });
+});
+
 app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
