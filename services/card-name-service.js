@@ -1,69 +1,11 @@
 const { uuid } = require("uuidv4");
 
-function createBoard() {
+function createBoard(keywords) {
   const cardColorsOptions = ["blue", "red", "grey", "black"];
   const cardColorsLimits = { blue: 8, red: 8, grey: 7, black: 1 };
   let cardColorsCounters = { blue: 0, red: 0, grey: 0, black: 0 };
   let totalCardsCounters = 0;
-  let words = [
-    "חתול",
-    "נעליים",
-    "שתן",
-    "טרקטור",
-    "עץ",
-    "קשת",
-    "טל מוסרי",
-    "טלוויזיה",
-    "בקבוק",
-    "רמקול",
-    "שעון",
-    "מראה",
-    "שמיים",
-    "שחור",
-    "אריה",
-    "אייפון",
-    "טייץ",
-    "כחול",
-    "אדום",
-    "מתוק",
-    "מגבון",
-    "כסא",
-    "מסכה",
-    "קרש",
-    "דודה",
-    "טוש",
-    "יונית לוי",
-    "מילון",
-    "גיוזה",
-    "שמן",
-    "ארטיק",
-    "בצל",
-    "אוגר",
-    "חיתול",
-    "אל",
-    "סטטיק",
-    "שירי מיימון",
-    "ציפי שביט",
-    "חני נחמיאס",
-    "סבון",
-    "כדור",
-    "פרח",
-    "חול",
-    "קקטוס",
-    "שואב אבק",
-    "ריקוד",
-    "במבי",
-    "ברבי",
-    "איטליה",
-    "ישראל",
-    "גאנה",
-    "מקסיקו",
-    "צרפתית",
-    "מסי",
-    "במבה",
-    "מקרנה",
-    "למבדה",
-  ];
+  let words = [...keywords]
   let generatedCardsColors = [[], [], [], [], []];
   let isBlueTeamTurn;
   let isGameOver = false;
